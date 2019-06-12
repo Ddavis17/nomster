@@ -40,13 +40,13 @@ before_action :authenticate_user!, only: [:new, :create]
 
 # when you select the update button, this executes
  def update
-  @place = Place.find(parmas[:id])
+    @place = Place.find(params[:id])
   @place.update_attributes(place_params)
   redirect_to root_path
  end
 
 
- def destory 
+ def destroy 
   @place = Place.find(params[:id])
   @place.destroy
   redirect_to root_path
@@ -57,8 +57,10 @@ private
 
 
 
-  place_params
+  def place_params
     params.require(:place).permit(:name, :description, :address)
   end
 
-  end
+end
+
+  
