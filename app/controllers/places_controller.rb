@@ -25,18 +25,23 @@ before_action :authenticate_user!, only: [:new, :create]
 def show 
   @place = Place.find(params[:id])
   end
+  
+def edit
+  <%= @place = Place.find(parmas[:id]) %>
+  
+end
+
+
+
+
 
   private
 
 
 
 
-  def place_params
+def place_params
     params.require(:place).permit(:name, :description, :address)
   end
-
-
-  
-
 
 end
