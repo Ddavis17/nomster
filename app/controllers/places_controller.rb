@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-before_action :authenticate_user!, only: [:new, :create]
+before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   # shows all the places in the db(w/ the exception of our limit of 10)
   def index
@@ -35,12 +35,20 @@ before_action :authenticate_user!, only: [:new, :create]
 # page to edit an exsiting page
  def edit
    @place = Place.find(parmas[:id]) 
+
+
+   if @place.user != current_user
+    return render plain: 'Not Allowed', status: :forbidden
+  end
   
  end
 
 # when you select the update button, this executes
  def update
     @place = Place.find(params[:id])
+    if @place.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
   @place.update_attributes(place_params)
   redirect_to root_path
  end
