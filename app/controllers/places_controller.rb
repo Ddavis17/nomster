@@ -22,7 +22,9 @@ before_action :authenticate_user!, only: [:new, :create]
   end
 
 
-
+def show 
+  @place = Place.find(params[:id])
+  end
 
   private
 
@@ -34,7 +36,7 @@ before_action :authenticate_user!, only: [:new, :create]
   end
 
 
-
+  
 
 
 end
