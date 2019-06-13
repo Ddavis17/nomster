@@ -23,11 +23,15 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
   def create
 
    @place = current_user.places.create(place_params)
-    if @place.valid?
+  
+    if @place.valid? 
     redirect_to root_path
   else
     render :new, status: :unprocessable_entity
   end
+
+  
+
 
   end
 
@@ -59,7 +63,7 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
   if @place.valid?
     redirect_to root_path
  else
-    render :edit status: :unprocessable_entity
+    render :edit, status: :unprocessable_entity
   end
 end
 
