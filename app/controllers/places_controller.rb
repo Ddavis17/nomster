@@ -29,10 +29,6 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
   else
     render :new, status: :unprocessable_entity
   end
-
-  
-
-
   end
 
 # the place to see indiv. places
