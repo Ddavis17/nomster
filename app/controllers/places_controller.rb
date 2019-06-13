@@ -34,6 +34,7 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
 # the place to see indiv. places
   def show 
   @place = Place.find(params[:id])
+  @comment = Comment.new
   end
   
 # page to edit an exsiting page
