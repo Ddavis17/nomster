@@ -5,6 +5,7 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
   def index
 
     @places = Place.all
+    Place.paginate(page: params[:page], per_page: 10)
 
   end
 
@@ -23,11 +24,10 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
   def create
 
    @place = current_user.places.create(place_params)
-  
-    if @place.valid? 
-    redirect_to root_path
+  if @place.valid? 
+      redirect_to root_path
   else
-    render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
   end
   end
 
@@ -38,7 +38,7 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
   
 # page to edit an exsiting page
  def edit
-   @place = Place.find(parmas[:id]) 
+   @place = Place.find(params[:id]) 
 
 
    if @place.user != current_user
