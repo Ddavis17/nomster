@@ -54,6 +54,7 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
     if @place.user != current_user
       return render plain: 'Not Allowed', status: :forbidden
     end
+  end
 
 
   @place.update_attributes(place_params)
@@ -62,7 +63,7 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
  else
     render :edit, status: :unprocessable_entity
   end
-end
+
 
 
  def destroy 
@@ -85,7 +86,9 @@ private
     params.require(:place).permit(:name, :description, :address)
   end
 
-end
+
+
+
 
 
 
