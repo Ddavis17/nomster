@@ -1,13 +1,11 @@
-
-
 <div class= "booyah-box col-10 offset-1">
 
-<h1> Edit This Location  </h1>
-<%= simple_form_for @place do |f| %>
-    <%= f.input :name %>
-    <%= f.input :address %>
-    <%= f.input :description %>
-    <br />
-    <%= f.submit 'Revise', class: 'btn btn-outline-primary' %>
+  <h1> Edit This Location  </h1>
+  <%= simple_form_for @place do |f| %>
+      <%= f.input :name %>
+      <%= f.input :address %>
+      <%= f.input :description %>
+      <br />
+      <%= f.submit 'Revise', class: 'btn btn-outline-primary' %>
   <% end %>
 </div>
