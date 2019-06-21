@@ -1,4 +1,4 @@
-<h1><%= @places.inspect  %></h1>
+<!-- <h1><%= @places.inspect %></h1> -->
 
 <% @places.each do |place| %>
   <div class="booyah-box col-10 offset-1">
@@ -12,8 +12,9 @@
       <% if place.comments.present? %>
         <div class="col-12">
             <blockquote>
-              <%= if place.comments.last.humanized_rating.present? %>
-                <b><%= place.comments.last.humanized_rating %></b> -
+              <% if place.comments.last.humanized_rating.present? %>
+                <b ><%= place.comments.last.humanized_rating %></b > - 
+                
               <% end %>
               <%= place.comments.last.message %>
               <small><%= place.comments.last.user.email %></small>
