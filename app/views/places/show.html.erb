@@ -77,10 +77,10 @@
       </div>
     </div>
 
-      <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+      <%= simple_form_for @photo, url: place_photos_path(@place), method: :post do |f| %>
       <div class="modal-body">
         <%= f.input :picture %>
-        <%= @photo.picture.to_s %>
+        <!-- <%= @photo.picture.to_s %> -->
         <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
       </div>
  <% end %>
