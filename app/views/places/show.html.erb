@@ -1,4 +1,4 @@
-<div class= 'booyah-box col-10 offset 1'>
+<div class= 'booyah-box col-12 offset 1'>
   <h1><%= @place.name %></h1>
   <br/>
     <i>   <%= @place.address %>  </i>
@@ -77,13 +77,17 @@
       </div>
     </div>
 
-      <%= simple_form_for @photo, url: place_photos_path(@place), method: :post do |f| %>
-      <div class="modal-body">
-        <%= f.input :picture %>
-        <!-- <%= @photo.picture.to_s %> -->
-        <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
-      </div>
- <% end %>
+  <%= simple_form_for @photo, url: place_photos_path(@place), method: :post do |f| %>
+    <div class="modal-body">
+      <%= f.input :picture %>
+      <!-- <%= @photo.picture.to_s %> -->
+      <%= f.submit "Add a Photo", class: 'btn btn-primary float-right' %>
+    </div>
+  <% end %>
+
+  <% @place.photos.each do |photo| %>
+    <%= image_tag(photo.picture.url, size: '200') %>
+  <% end %>
 
   <div class="col-10 offset-1">
 
