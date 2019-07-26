@@ -6,7 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track', 'reload' %>
   </head>
 
   <body>
@@ -22,7 +22,7 @@
               <%= link_to new_place_path, class: 'nav-link' do %>
                <i class="fas fa-plus-circle"></i>
                New Place
-              <% end %>  
+              <% end %>
             </ul>
             <ul class= "navbar-nav">
               <% if user_signed_in? %>
@@ -30,6 +30,7 @@
                <%= link_to 'My Profile', user_path(current_user), class: 'nav-link' %>
               </li>
                 <li class= "nav-item"> 
+
                   <%= link_to 'You Are Signed In', '#', class: 'nav-link' %>
                   <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
                 </li>

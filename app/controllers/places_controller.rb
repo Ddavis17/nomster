@@ -7,12 +7,12 @@ class PlacesController < ApplicationController
     Place.paginate(page: params[:page], per_page: 10)
   end
 
-# page to add a place
+ # page to add a place
   def new
     @place = Place.new
   end
 
-# button to create place and redirect to root page
+ # button to create place and redirect to root page
 
   def create
     @place = current_user.places.create(place_params)
@@ -20,11 +20,11 @@ class PlacesController < ApplicationController
     if @place.valid? 
       redirect_to root_path
     else
-      render :new, status: :unprocessable_entity
+       render :new, status: :unprocessable_entity
     end
   end
 
-# the place to see indiv. places
+ # the place to see indiv. places
   def show 
     @place = Place.find(params[:id])
     @comment = Comment.new
@@ -32,7 +32,7 @@ class PlacesController < ApplicationController
     
   end
   
-# page to edit an exsiting page
+ # page to edit an exsiting page
   def edit
     @place = Place.find(params[:id]) 
 
@@ -41,7 +41,7 @@ class PlacesController < ApplicationController
     end
   end
 
-# when you select the update button, this executes
+ # when you select the update button, this executes
   def update
     @place = Place.find(params[:id])
     if @place.user != current_user
